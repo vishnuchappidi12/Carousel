@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            outline: none;
+        }
+        .con{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .bnr{
+            position: absolute;
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            top:50%;
+            left: 50%;
+            align-items: center;
+            gap:7px;
+            transform: translate(-50%,-50%);
+        }
+        h1{
+            color: crimson;
+            font-size: 35px;
+        }
+        p{
+            color: rgb(16, 23, 230);
+            font-size: 20px;
+        }
+        button{
+            padding: 5px 20px;
+            font-size: 20px;
+            background-color: transparent;
+            color: brown;
+        }
+        .lt,.rt{
+            position: absolute;
+            top:50%;
+            font-size:35px;
+            font-weight: bolder;
+            transform: translateY(-50%);
+        }
+        .lt{
+            left: 10px;
+        }
+        .rt{
+        right:10px;
+        }
+        .dotcon{
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: crimson;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <img src="nature.img1.jpg"/>
+        <div class="bnr">
+            <h1>Heading Text-1</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, minima.</p>
+            <button>KnowMore</button>
+        </div>
+        <button class="lt" onclick="bkw()">&lt;</button>
+        <button class="rt" onclick="move()">&gt;</button>
+        <div class="dotcon">
+            <i class="fa-solid fa-circle" onclick="set(0)"></i>
+            <i class="fa-regular fa-circle" onclick="set(1)"></i>
+            <i class="fa-regular fa-circle" onclick="set(2)"></i>
+            <i class="fa-regular fa-circle" onclick="set(3)"></i>
+            <i class="fa-regular fa-circle" onclick="set(4)"></i>
+            <i class="fa-regular fa-circle" onclick="set(5)"></i>
+        </div>
+    </div>
+    <script>
+        let a=[
+            {'img':"nature.img1.jpg","h":"Heading Text-1",'p':"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, minima-1."},
+            {'img':"nature.img2.jpg","h":"Heading Text-2",'p':"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, minima-2."},
+            {'img':"nature.img3.jpeg","h":"Heading Text-3",'p':"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, minima-3."},
+            {'img':"nature.img4.jpg","h":"Heading Text-4",'p':"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, minima-4."},
+            {'img':"nature.img5.jpeg","h":"Heading Text-5",'p':"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, minima-5."},
+            {'img':"nature.img6.jpg","h":"Heading Text-6",'p':"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, minima-6."}
+        ]
+        let imgr=document.getElementsByTagName("img")[0]
+        let hr=document.getElementsByTagName("h1")[0]
+        let pr=document.getElementsByTagName("p")[0]
+        let ir=document.getElementsByTagName("i")
+        let i=-1
+        let fwd=()=>{
+            if(i!=-1)
+        {
+            ir[i].className="fa-regular fa-circle"
+        }
+            i=(i+1)%a.length
+            imgr.src=a[i].img
+            hr.innerHTML=a[i].h
+            pr.innerHTML=a[i].p
+            ir[i].className="fa-solid fa-circle"
+        }
+        let move=()=>{
+            if(i==-1)
+        {
+            i=0
+        }
+        ir[i].className="fa-regular fa-circle"
+        i=(i+1)%a.length
+        imgr.src=a[i].img
+        hr.innerHTML=a[i].h
+        pr.innerHTML=a[i].p
+        ir[i].className="fa-solid fa-circle"
+        }
+        let bkw=()=>{
+            if(i==-1)
+        {
+            i=0
+        }
+        ir[i].className="fa-regular fa-circle"
+            i=i-1
+            if(i<0)
+        {
+            i=5
+        }
+        imgr.src=a[i].img
+            hr.innerHTML=a[i].h
+            pr.innerHTML=a[i].p
+      ir[i].className="fa-solid fa-circle"
+
+        }
+        let set=(ind)=>{
+            if(i==-1)
+        {
+            i=0
+        }
+        ir[i].className="fa-regular fa-circle"
+            i=ind
+            imgr.src=a[i].img
+            hr.innerHTML=a[i].h
+            pr.innerHTML=a[i].p
+            ir[i].className="fa-solid fa-circle"
+
+        }
+       setInterval(fwd,5000)
+    </script>
+</body>
+</html>
